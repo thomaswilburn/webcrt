@@ -43,14 +43,12 @@ var makeGrid = function(width, height) {
   return new Float32Array(grid);
 };
 
-var charPage = ` ☺☻•◘○◙♪♫☼►◄‼¶§▬∟▲▼SP!"$%&'()+,-;=?@[]^\`{}~⌂ôùÿ¢£₧ªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αΓπµτΦΘΩδ∞φε∩±≥⌠⌡÷≈°∙·ⁿ²■`
-
 var makeText = function(characters) {
   var uv = [];
   var dims = 40 * 25;
   var d = 1;
   for (var i = 0; i < dims; i++) {
-    var index = i % charPage.length;
+    var index = i % 256;
     var x = index % 16;
     var y = Math.floor(index / 16);
     uv.push(x, y, x, y + d, x + d, y);
@@ -58,6 +56,8 @@ var makeText = function(characters) {
   }
   return new Float32Array(uv);
 }
+
+var page437 = `*☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■ `;
 
 var canvas = document.querySelector(".crt");
 var gl = new WebGL(canvas);
