@@ -97,7 +97,7 @@ class WebGL {
   }
 
   drawTriangles(count, offset = 0) {
-    this.context.drawArrays(gl.TRIANGLES, offset, count * 3);
+    this.context.drawArrays(this.context.TRIANGLES, offset, count * 3);
   }
 
   createTexture(image, filter = this.context.NEAREST) {
